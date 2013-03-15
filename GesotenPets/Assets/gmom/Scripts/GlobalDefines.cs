@@ -1,3 +1,5 @@
+#define GESOTEN_BUILD_MODE_TEST
+//#define GESOTEN_BUILD_MODE_RELEASE
 using UnityEngine;
 using System.Collections;
 
@@ -32,4 +34,16 @@ public class GlobalDefines : MonoBehaviour {
 	void Update () {
 	
 	}
+	
+	 public string AvatarLifeURL
+    {
+        get
+        {
+			#if GESOTEN_BUILD_MODE_TEST  
+			            return "http://life.t.gesoten.com";
+			#elif GESOTEN_BUILD_MODE_RELEASE
+			            return "http://life.gesoten.com";
+			#endif
+        }
+    }
 }

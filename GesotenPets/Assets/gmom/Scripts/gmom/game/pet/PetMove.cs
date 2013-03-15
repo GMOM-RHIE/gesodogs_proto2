@@ -39,16 +39,16 @@ public class PetMove : MonoBehaviour
 	 * pet data
 	 **/	
 	public PetJson petDetail = null;
-	Main3D Main3D_Component;
-	MainUI MainUI_Component;
+//	Main3D Main3D_Component;
+//	MainUI MainUI_Component;
 	PetNetwork petNetworkComponent;
 	Transform toucher;
 	
 	
 	void Start ()
 	{
-		Main3D_Component = Camera.main.GetComponent("Main3D") as Main3D;
-		MainUI_Component = Camera.main.GetComponent("MainUI") as MainUI;
+		//Main3D_Component = Camera.main.GetComponent("Main3D") as Main3D;
+		//MainUI_Component = Camera.main.GetComponent("MainUI") as MainUI;
 		petNetworkComponent = Camera.main.GetComponent("PetNetwork") as PetNetwork;
 	}
 	
@@ -63,29 +63,29 @@ public class PetMove : MonoBehaviour
 		if (walkInterval <= 0) {
 			MoveTargetPosition = new Vector3((float)Random.Range(-3.5f,3.5f),0f,(float)Random.Range(-1.0f,6.0f));
 			walkInterval = Random.Range(4,10);
-			if ( Application.loadedLevelName == "hiroba") {
+			/*if ( Application.loadedLevelName == "hiroba") {
 				gameObject.GetComponent<NavMeshAgent>().SetDestination(MoveTargetPosition);
-			}
+			}*/
 		}
 		
 		if (currentMotionState == motion_state.walk && MoveTargetPosition != null) {
-			if ( Application.loadedLevelName == "default") {
+			//if ( Application.loadedLevelName == "default") {
 				transform.rotation = Quaternion.LookRotation(MoveTargetPosition-transform.position);
 				gameObject.transform.position=Vector3.MoveTowards(gameObject.transform.position,MoveTargetPosition,Time.deltaTime/2);
 				if (Vector3.Distance(gameObject.transform.position,MoveTargetPosition) < 0.1) {
 					changeMotionState(motion_state.sit);	
 				}
-			}
+			//}
 		}
 	}
 	
 	void OnGUI ()
 	{
-	  	if(MainUI_Component != null)
+	  	/*if(MainUI_Component != null)
 	  	{
 	
 	      if(MainUI_Component.showGUI)
-	      {
+	      {*/
 	        GUI.skin = petNetworkComponent.AvatarGameSkin;
 			switch(touchState)
 	        {
@@ -97,8 +97,8 @@ public class PetMove : MonoBehaviour
 	          break;
 	        }
 	      }
-	  }
-  	}
+	  /*}
+  	}*/
 	
 	void changeMotionState() {
 		int r = Random.Range(0,100);
@@ -150,16 +150,16 @@ public class PetMove : MonoBehaviour
 	
 	public void OnTouch(Transform _toucher) {
 		Debug.LogWarning(_toucher.name);
-		if(!PetNetwork.PetItemConfirmDialogVisibility && !PetNetwork.PetItemDialogVisibility &&
-			Application.loadedLevelName == "default" && Main3D_Component.SetContoler(gameObject)){
+		if(!PetNetwork.PetItemConfirmDialogVisibility && !PetNetwork.PetItemDialogVisibility) {
+			//&& Application.loadedLevelName == "default" && Main3D_Component.SetContoler(gameObject)){
 			toucher = _toucher;
 	      	switch(touchState){
 	        case ItemState.none:
-	          if((_toucher.gameObject.GetComponent("MoveTo") as MoveTo).user.user_lite.user_id == petDetail.user_id.ToString()){
+	          //if((_toucher.gameObject.GetComponent("MoveTo") as MoveTo).user.user_lite.user_id == petDetail.user_id.ToString()){
 	            touchState = ItemState.mytouch;
-	          }else{
+	          /*}else{
 	            touchState = ItemState.touch;
-	          }
+	          }*/
 	          break;
 	        case ItemState.touch:
 	          break;
@@ -173,7 +173,7 @@ public class PetMove : MonoBehaviour
 	    {
 	      toucher = null;
 	      touchState = ItemState.none;
-	      Main3D_Component.ResetContoler(gameObject);
+//	      Main3D_Component.ResetContoler(gameObject);
 	      return;
 	    }
 	    if(menu_pos.x < r){menu_pos.x = r;}
@@ -182,38 +182,38 @@ public class PetMove : MonoBehaviour
 	    if(menu_pos.y > Screen.height - r){menu_pos.y = Screen.height - r;}
 	
 	    GUILayout.BeginArea(new Rect(menu_pos.x - 200, Screen.height - menu_pos.y -150, 400, 400));
-	    if((isOwner || Debug.isDebugBuild) && GUI.Button(new Rect(200-32+r*Mathf.Cos(4.5f*Mathf.PI/4),200-32+r*Mathf.Sin(4.5f*Mathf.PI/4),56,65),"ごはん","Ring_PetFeedBtn")
-	      && MainUI_Component.customDialogVisibility == false)
+	    if((isOwner || Debug.isDebugBuild) && GUI.Button(new Rect(200-32+r*Mathf.Cos(4.5f*Mathf.PI/4),200-32+r*Mathf.Sin(4.5f*Mathf.PI/4),56,65),"ごはん","Ring_PetFeedBtn"))
+//	      && MainUI_Component.customDialogVisibility == false)
 	    {
 	      toucher = null;
 	      touchState = ItemState.none;
-	      Main3D_Component.ResetContoler(gameObject);
+//	      Main3D_Component.ResetContoler(gameObject);
 			petNetworkComponent.setPetItemDialogVisible(this.gameObject);
 	    }
-	    if(GUI.Button(new Rect(200-32+r*Mathf.Cos(5.5f*Mathf.PI/4),200-32+r*Mathf.Sin(5.5f*Mathf.PI/4),56,65),"なでる","Ring_PetBrushBtn")
-	      && MainUI_Component.customDialogVisibility == false)
+	    if(GUI.Button(new Rect(200-32+r*Mathf.Cos(5.5f*Mathf.PI/4),200-32+r*Mathf.Sin(5.5f*Mathf.PI/4),56,65),"なでる","Ring_PetBrushBtn"))
+//	      && MainUI_Component.customDialogVisibility == false)
 	    {
 	      Application.ExternalCall("DoBrushPet", petDetail.user_pet_id.ToString());
 	      toucher = null;
 	      touchState = ItemState.none;
-	      Main3D_Component.ResetContoler(gameObject);
+//	      Main3D_Component.ResetContoler(gameObject);
 	    }
 	
-	    if(GUI.Button(new Rect(200-39+r*Mathf.Cos(6.5f*Mathf.PI/4),200-32+r*Mathf.Sin(6.5f*Mathf.PI/4),56,65),"体調","Ring_PetConditionBtn")
-	      && MainUI_Component.customDialogVisibility == false)
+	    if(GUI.Button(new Rect(200-39+r*Mathf.Cos(6.5f*Mathf.PI/4),200-32+r*Mathf.Sin(6.5f*Mathf.PI/4),56,65),"体調","Ring_PetConditionBtn"))
+//	      && MainUI_Component.customDialogVisibility == false)
 	    {
 	      toucher = null;
 	      touchState = ItemState.none;
-	      Main3D_Component.ResetContoler(gameObject);
+//	      Main3D_Component.ResetContoler(gameObject);
 		  petNetworkComponent.setPetDetailDialogVisible(this.gameObject);
 	    }
 	
-	    if(GUI.Button(new Rect(200-32+r*Mathf.Cos(7.5f*Mathf.PI/4),200-32+r*Mathf.Sin(7.5f*Mathf.PI/4),70,64),"とじる","Ring_CloseBtn")
-	      && MainUI_Component.customDialogVisibility == false)
+	    if(GUI.Button(new Rect(200-32+r*Mathf.Cos(7.5f*Mathf.PI/4),200-32+r*Mathf.Sin(7.5f*Mathf.PI/4),70,64),"とじる","Ring_CloseBtn"))
+//	      && MainUI_Component.customDialogVisibility == false)
 	    {
 	      toucher = null;
 	      touchState = ItemState.none;
-	      Main3D_Component.ResetContoler(gameObject);
+//	      Main3D_Component.ResetContoler(gameObject);
 	    }
 		GUILayout.EndArea();
 	}
