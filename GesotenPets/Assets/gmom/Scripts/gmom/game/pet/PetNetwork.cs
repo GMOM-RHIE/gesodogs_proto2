@@ -6,9 +6,9 @@ using Newtonsoft.Json.Linq;
 public class PetNetwork : MonoBehaviour
 {
 	// Use this for initialization
-	Main3D Main3D_Component;
-	MainUI MainUI_Component;
-	ItemAppearance ItemAppearance_Component;
+//	Main3D Main3D_Component;
+//	MainUI MainUI_Component;
+//	ItemAppearance ItemAppearance_Component;
 	
 	public static bool PetDetailDialogVisibility = false;
 	public static bool PetItemDialogVisibility = false;
@@ -45,13 +45,13 @@ public class PetNetwork : MonoBehaviour
 	public string[] conditionNames;
 	void Start ()
 	{
-		Main3D_Component = gameObject.GetComponent("Main3D") as Main3D;
-		MainUI_Component = gameObject.GetComponent("MainUI") as MainUI;
-	    ItemAppearance_Component = GameObject.Find("/3di/room_item").GetComponent("ItemAppearance") as ItemAppearance;
+		//Main3D_Component = gameObject.GetComponent("Main3D") as Main3D;
+		//MainUI_Component = gameObject.GetComponent("MainUI") as MainUI;
+	    //ItemAppearance_Component = GameObject.Find("/3di/room_item").GetComponent("ItemAppearance") as ItemAppearance;
 		if (Application.loadedLevelName == "default") {
 			Application.ExternalCall("GetRoomPet", "");
 		}
-		/*SetRoomPet("[{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":60,\"flag\":0,\"growth_point\":20,\"love_point\":30,\"hunger_point\":20,\"image_url\":\"/img/item/pet/dog_01.png\",\"model\":\"prefab/pet/pet_001\",\"name\":\"ハチ公ああああああ\",\"pet_condition\":2,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/pet/pet_01_001\",\"user_id\":106,\"user_pet_id\":1,\"brushable\":true},{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":10,\"flag\":0,\"growth_point\":2,\"love_point\":10,\"hunger_point\":10,\"image_url\":\"/img/item/pet/dog_01.png\",\"model\":\"prefab/pet/pet_001\",\"name\":\"HACHI\",\"pet_condition\":3,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/pet/pet_01_001\",\"user_id\":106,\"user_pet_id\":20,\"brushable\":true}]");		
+		SetRoomPet("[{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":60,\"flag\":0,\"growth_point\":20,\"love_point\":30,\"hunger_point\":20,\"image_url\":\"/img/item/pet/dog_01.png\",\"model\":\"prefab/pet/pet_001\",\"name\":\"ハチ公ああああああ\",\"pet_condition\":2,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/pet/pet_01_001\",\"user_id\":106,\"user_pet_id\":1,\"brushable\":true},{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":10,\"flag\":0,\"growth_point\":2,\"love_point\":10,\"hunger_point\":10,\"image_url\":\"/img/item/pet/dog_01.png\",\"model\":\"prefab/pet/pet_001\",\"name\":\"HACHI\",\"pet_condition\":3,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/pet/pet_01_001\",\"user_id\":106,\"user_pet_id\":20,\"brushable\":true}]");		
 		SetRoomPet("[{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":60,\"flag\":0,\"growth_point\":20,\"love_point\":30,\"hunger_point\":20,\"image_url\":\"/img/item/pet/dog_01.png\",\"model\":\"prefab/pet/pet_001\",\"name\":\"ハチ公ああああああ\",\"pet_condition\":2,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/pet/pet_01_001\",\"user_id\":106,\"user_pet_id\":1,\"brushable\":true},{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":10,\"flag\":0,\"growth_point\":2,\"love_point\":10,\"hunger_point\":10,\"image_url\":\"/img/item/pet/dog_01.png\",\"model\":\"prefab/pet/pet_001\",\"name\":\"HACHI\",\"pet_condition\":3,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/pet/pet_01_001\",\"user_id\":106,\"user_pet_id\":20,\"brushable\":true}]");		
 		SetPetItem("" +
 			"[{\"consumable\":1,\"description\":\"ペットの食べるものじゃない\",\"feeling_point\":0,\"growth_point\":0,\"hunger_point\":10,\"image_url\":\"/img/item/pet/biscuit.png\",\"item_type\":1,\"number\":1,\"pet_item_id\":1,\"price\":0,\"rarity\":0,\"user_id\":106,\"user_pet_item_id\":1,\"name\":\"無添加ビスケット\",\"particle_amount\":20}" +
@@ -62,8 +62,8 @@ public class PetNetwork : MonoBehaviour
 			",{\"consumable\":1,\"description\":\"ペットの食べるものじゃない\",\"feeling_point\":0,\"growth_point\":0,\"hunger_point\":10,\"image_url\":\"/img/item/pet/biscuit.png\",\"item_type\":1,\"number\":6,\"pet_item_id\":1,\"price\":0,\"rarity\":0,\"user_id\":106,\"user_pet_item_id\":1,\"name\":\"TEST_ITEM6\"}" +
 			",{\"consumable\":1,\"description\":\"ペットの食べるものじゃない\",\"feeling_point\":0,\"growth_point\":0,\"hunger_point\":10,\"image_url\":\"/img/item/pet/biscuit.png\",\"item_type\":1,\"number\":7,\"pet_item_id\":1,\"price\":0,\"rarity\":0,\"user_id\":106,\"user_pet_item_id\":1,\"name\":\"TEST_ITEM7\"}" +
 			",{\"consumable\":1,\"description\":\"ペットの食べるものじゃない\",\"feeling_point\":0,\"growth_point\":0,\"hunger_point\":10,\"image_url\":\"/img/item/pet/biscuit.png\",\"item_type\":1,\"number\":8,\"pet_item_id\":1,\"price\":0,\"rarity\":0,\"user_id\":106,\"user_pet_item_id\":1,\"name\":\"TEST_ITEMJ\"}]");
-		PetItemDialogVisibility = false;*/
-		//CompleteFeedPet("{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":60,\"flag\":0,\"growth_point\":3,\"love_point\":30,\"hunger_point\":20,\"image_url\":\"/img/item/pet/biscuit.png\",\"model\":\"prefab/room/doll/doll_02\",\"name\":\"ハチ公\",\"pet_condition\":0,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/room/kotatsu/kotatsu_02/kotatsu_02_002\",\"user_id\":106,\"user_pet_id\":1,\"brushable\":true}");
+		PetItemDialogVisibility = false;
+		CompleteFeedPet("{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":60,\"flag\":0,\"growth_point\":3,\"love_point\":30,\"hunger_point\":20,\"image_url\":\"/img/item/pet/biscuit.png\",\"model\":\"prefab/room/doll/doll_02\",\"name\":\"ハチ公\",\"pet_condition\":0,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/room/kotatsu/kotatsu_02/kotatsu_02_002\",\"user_id\":106,\"user_pet_id\":1,\"brushable\":true}");
 		
 	}
 	
@@ -95,11 +95,13 @@ public class PetNetwork : MonoBehaviour
 				PetMove m = g.GetComponent("PetMove") as PetMove;
 				m.petDetail = pets[i];
 				userPetObjects[i] = m;
-				StartCoroutine
+				/*StartCoroutine
                 (ItemAppearance_Component.loadTextureFromURL
                  (g.transform.Find("Null/root").gameObject.renderer.material,
                   0,
                   pets[i].texture));
+                  //Get texture from url
+                  */
 				float s=1.0f+((float)pets[i].growth_point)/MaxGrowth/2.0f;
 				g.transform.localScale = new Vector3(s,s,s);
 				PetGameObjects.Add(pets[i].user_pet_id, g);
@@ -137,7 +139,8 @@ public class PetNetwork : MonoBehaviour
 		    }
 		}
 		if (goaways != "") {
-			MainUI_Component.OnCustomDialog(goaways + "が家出してしまいました…");	
+			Debug.LogWarning(goaways + "が家出してしまいました…");
+			//	MainUI_Component.OnCustomDialog(goaways + "が家出してしまいました…");	
 		}
 		userPets = pets;
 		
@@ -158,7 +161,7 @@ public class PetNetwork : MonoBehaviour
 		itemLabels = new GUIContent[petItems.Length];
 		for(var i=0;i<petItems.Length;i++) {
 			GUIContent item = new GUIContent();
-			item.text=petItems[i].name;//////////
+			item.text=petItems[i].name;
 			itemLabels[i]=item;
 			StartCoroutine(getIcon(GlobalDefines.instance.AvatarLifeURL+petItems[i].image_url, item));
 		}
@@ -167,11 +170,41 @@ public class PetNetwork : MonoBehaviour
 	}
 	public void CompleteFeedPet(string json) {
 		Debug.Log("Feed : " + json);
-		PetJson pet = JsonConvert.DeserializeObject<PetJson>(json);
+		/*PetJson pet = JsonConvert.DeserializeObject<PetJson>(json);
 		if (pet.pet_condition == (int)PetMove.condition.normal) {
 			removeBadCondition(pet.user_pet_id);
+		}*/
+		
+		foreach(DictionaryEntry ent in PetGameObjects) {
+			GameObject obj = (GameObject)ent.Value;
+			PetMove mover = (obj.GetComponent("PetMove") as PetMove);
+			PetDetailDialogVisibility = false;
+			GameObject touch_effect = (GameObject)Resources.Load ("prefab/effect/FeedParticle");
+			touch_effect = (GameObject)Instantiate(touch_effect);
+		    Destroy( touch_effect , 5.0f);
+			touch_effect.transform.parent = obj.transform;
+			touch_effect.transform.localPosition=new Vector3(0,0.1f,0.4f);
+			
+			GameObject touch_effect2 = (GameObject)Resources.Load ("particle_prefab/hart_kirakira_pirticle");
+			touch_effect2 = (GameObject) Instantiate (touch_effect2,obj.transform.position + touch_effect2.transform.position + new Vector3(0,-1,0),touch_effect2.transform.rotation);
+		    
+			ParticleSystem particle = (ParticleSystem) touch_effect2.GetComponent("ParticleSystem");
+			particle.GetComponentsInChildren<ParticleSystem>();
+			particle.Stop();
+			particle.startDelay = 5.0f;
+			particle.emissionRate = 10f;
+			ParticleSystem[] children = particle.GetComponentsInChildren<ParticleSystem>();
+			particle.Play();
+			foreach(ParticleSystem p in children){
+				p.Stop();
+				p.startDelay = 5f;
+				p.Play();
+			}
+			Destroy(touch_effect2,8.5f);
+				
+			mover.changeMotionState(PetMove.motion_state.eat);
 		}
-		GameObject obj = PetGameObjects[pet.user_pet_id] as GameObject;
+		/*GameObject obj = PetGameObjects[pet.user_pet_id] as GameObject;
 		PetMove mover = (obj.GetComponent("PetMove") as PetMove);
 		mover.petDetail = pet;
 		PetDetailDialogVisibility = false;
@@ -198,11 +231,11 @@ public class PetNetwork : MonoBehaviour
 		}
 		Destroy(touch_effect2,8.5f);
 			
-		mover.changeMotionState(PetMove.motion_state.eat);
+		mover.changeMotionState(PetMove.motion_state.eat);*/
 	}
 	public void CompleteBrushPet(string json) {
 		Debug.Log("Brush : " + json);
-		PetJson pet = JsonConvert.DeserializeObject<PetJson>(json);
+		/*PetJson pet = JsonConvert.DeserializeObject<PetJson>(json);
 		if (pet.pet_condition == (int)PetMove.condition.normal) {
 			removeBadCondition(pet.user_pet_id);
 		}
@@ -215,8 +248,19 @@ public class PetNetwork : MonoBehaviour
 	      Instantiate (touch_effect,
 	        obj.transform.position,
 	        touch_effect.transform.rotation),
-	      3.0f);
-		mover.changeMotionState(PetMove.motion_state.brush);
+	      3.0f);*/
+		foreach(DictionaryEntry ent in PetGameObjects) {
+			GameObject obj = (GameObject)ent.Value;
+			PetMove mover = (obj.GetComponent("PetMove") as PetMove);
+			PetDetailDialogVisibility = false;
+			GameObject touch_effect = (GameObject)Resources.Load ("particle_prefab/hart_kirakira_pirticle");
+		    Destroy(
+		      Instantiate (touch_effect,
+		        obj.transform.position,
+		        touch_effect.transform.rotation),
+		      3.0f);
+			mover.changeMotionState(PetMove.motion_state.brush);
+		}
 		//effect
 	}
 	
@@ -241,13 +285,13 @@ public class PetNetwork : MonoBehaviour
 	}
 	IEnumerator CallPet(PetMove pm) {
 		yield return new WaitForSeconds(Random.Range(0,1.5f));
-		Vector3 p = Main3D_Component.myAvatar.position;
+		/*Vector3 p = Main3D_Component.myAvatar.position;
 		p.x+=Random.Range(-0.5f,0.5f);
 		p.z+=Random.Range(-0.5f,0.5f);
 		
 		pm.MoveTargetPosition = p;
 		pm.changeMotionState(PetMove.motion_state.walk);
-		pm.walkInterval=10f;
+		pm.walkInterval=10f;*/
 	}
 	void OnGUI(){
 		GUI.skin = AvatarGameSkin;
@@ -313,7 +357,8 @@ public class PetNetwork : MonoBehaviour
 						currentSelectPetItemContent=itemLabels[c];
 						PetItemDialogVisibility = false;
 					} else {
-						MainUI_Component.OnCustomDialog("アイテムが不足しています！");	
+						//MainUI_Component.OnCustomDialog("アイテムが不足しています！");
+						Debug.LogWarning("アイテムが不足しています！");
 					}
 				};
 				GUILayout.Label(userPetItems[c].number.ToString(),AvatarGameSkin.GetStyle("PetItemCountLabel"));
