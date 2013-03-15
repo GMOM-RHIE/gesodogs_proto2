@@ -63,8 +63,8 @@ public class PetNetwork : MonoBehaviour
 			",{\"consumable\":1,\"description\":\"ペットの食べるものじゃない\",\"feeling_point\":0,\"growth_point\":0,\"hunger_point\":10,\"image_url\":\"/img/item/pet/biscuit.png\",\"item_type\":1,\"number\":7,\"pet_item_id\":1,\"price\":0,\"rarity\":0,\"user_id\":106,\"user_pet_item_id\":1,\"name\":\"TEST_ITEM7\"}" +
 			",{\"consumable\":1,\"description\":\"ペットの食べるものじゃない\",\"feeling_point\":0,\"growth_point\":0,\"hunger_point\":10,\"image_url\":\"/img/item/pet/biscuit.png\",\"item_type\":1,\"number\":8,\"pet_item_id\":1,\"price\":0,\"rarity\":0,\"user_id\":106,\"user_pet_item_id\":1,\"name\":\"TEST_ITEMJ\"}]");
 		PetItemDialogVisibility = false;
-		CompleteFeedPet("{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":60,\"flag\":0,\"growth_point\":3,\"love_point\":30,\"hunger_point\":20,\"image_url\":\"/img/item/pet/biscuit.png\",\"model\":\"prefab/room/doll/doll_02\",\"name\":\"ハチ公\",\"pet_condition\":0,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/room/kotatsu/kotatsu_02/kotatsu_02_002\",\"user_id\":106,\"user_pet_id\":1,\"brushable\":true}");
-		
+		//CompleteFeedPet("{\"description\":\"ねこ\",\"effect\":\"\",\"feeling_point\":60,\"flag\":0,\"growth_point\":3,\"love_point\":30,\"hunger_point\":20,\"image_url\":\"/img/item/pet/biscuit.png\",\"model\":\"prefab/room/doll/doll_02\",\"name\":\"ハチ公\",\"pet_condition\":0,\"pet_id\":1,\"price\":100,\"rarity\":0,\"texture\":\"textures/room/kotatsu/kotatsu_02/kotatsu_02_002\",\"user_id\":106,\"user_pet_id\":1,\"brushable\":true}");
+		CompleteBrushPet();
 	}
 	
 	public void SetRoomPet(string json) {
@@ -168,7 +168,7 @@ public class PetNetwork : MonoBehaviour
 		userPetItems = petItems;
 		PetItemDialogVisibility = true;
 	}
-	public void CompleteFeedPet(string json) {
+	public void CompleteFeedPet(string json="") {
 		Debug.Log("Feed : " + json);
 		/*PetJson pet = JsonConvert.DeserializeObject<PetJson>(json);
 		if (pet.pet_condition == (int)PetMove.condition.normal) {
@@ -233,7 +233,7 @@ public class PetNetwork : MonoBehaviour
 			
 		mover.changeMotionState(PetMove.motion_state.eat);*/
 	}
-	public void CompleteBrushPet(string json) {
+	public void CompleteBrushPet(string json="") {
 		Debug.Log("Brush : " + json);
 		/*PetJson pet = JsonConvert.DeserializeObject<PetJson>(json);
 		if (pet.pet_condition == (int)PetMove.condition.normal) {

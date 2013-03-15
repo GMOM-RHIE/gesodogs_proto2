@@ -50,6 +50,7 @@ public class PetMove : MonoBehaviour
 		//Main3D_Component = Camera.main.GetComponent("Main3D") as Main3D;
 		//MainUI_Component = Camera.main.GetComponent("MainUI") as MainUI;
 		petNetworkComponent = Camera.main.GetComponent("PetNetwork") as PetNetwork;
+		motionInterval = DEFAULT_MOTION_INTERVAL;
 	}
 	
 	// Update is called once per frame
@@ -127,6 +128,7 @@ public class PetMove : MonoBehaviour
 		if (currentMotionState == motion_state.walk && animation.IsPlaying("walk_loop") || currentMotionState == motion_state.sit && animation.IsPlaying("sit_loop")) {
 			return;	
 		}
+		Debug.Log(motionInterval + "," + currentMotionState);
 		
 		if (currentMotionState == motion_state.walk && animation.IsPlaying("sit_loop")) {
 			animation["standup2"].speed = -1;
