@@ -1,6 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\gmom\Scripts\gmom\game\pet\PetGUI.cs">
+    <Files>
+      <File FileName="Assets\gmom\Scripts\gmom\game\pet\PetMove.cs" Line="190" Column="23" />
+      <File FileName="Assets\gmom\Scripts\gmom\game\pet\PetGUI.cs" Line="39" Column="32" />
+      <File FileName="Assets\gmom\Scripts\gmom\game\pet\PetNetwork.cs" Line="174" Column="60" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
